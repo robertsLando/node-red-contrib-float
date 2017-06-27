@@ -27,12 +27,12 @@
 </script>
 
 <script type="text/x-red" data-help-name="toFloat">
-<p>Converts Binary Strings and Decimals Digits (32 bit) into Floating point Numbers. Works also with arrays.</p>
+<p>Converts Binary Strings and Decimals Digits (32 bit) into IEEE-754 Floating Point numbers. Works also with arrays.</p>
 
 <h3>Inputs</h3>
     <dl class="message-properties">
         <dt>payload
-            <span class="property-type">'01' string | Int 32</span>
+            <span class="property-type"> string | Int </span>
         </dt>
         <dd> the number or the array of numbers to decode in Float 32 bit. </dd>
         <dt class="optional">Decimals Number <span class="property-type">Number</span></dt>
@@ -57,12 +57,12 @@
 
 <h3>Details</h3>
     <p><code>msg.payload</code> must be an Integer 32 bit or a Binary string like
-    '1000000010010001111010111000011' if the type is wrong an error is returned,
+    '1000000010010001111010111000011' (3.14) if the type is wrong an error is returned,
     if the input is an Array the index of the wrong element is returned with the error.
     <p>Decimals digits can be configured in the node or if left blank the numbers will not
     be truncated</p>
 <h3>References</h3>
     <ul>
-        <li><a>GitHub</a> - the node github repository https://github.com/robertsLando/node-red-contrib-float</li>
+        <li><a href="https://github.com/robertsLando/node-red-contrib-float">GitHub</a> - the node github repository</li>
     </ul>
 </script>
