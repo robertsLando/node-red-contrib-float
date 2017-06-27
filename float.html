@@ -1,14 +1,14 @@
 <script type="text/javascript">
     RED.nodes.registerType('toFloat',{
         category: 'function',
-        color: '#a6bbcf',
+        color: '#FFAAAA',
         defaults: {
             name: {value:""},
             toFixed: {value:""}
         },
         inputs:1,
         outputs:1,
-        icon: "file.png",
+        icon: "arrow-in.png",
         label: function() {
             return this.name||"toFloat";
         }
@@ -21,11 +21,48 @@
         <input type="text" id="node-input-name" placeholder="Name">
     </div>
     <div class="form-row">
-        <label for="node-input-toFixed"><i class="icon-tag"></i> Decimal numbers</label>
-        <input type="number" id="node-input-toFixed" placeholder="Example 1: .1 - 2: 0.01">
+        <label for="node-input-toFixed"><i class="icon-tag"></i> Decimal digits</label>
+        <input type="number" id="node-input-toFixed" placeholder="Example 1: 0.1 - 2: 0.01">
     </div>
 </script>
 
 <script type="text/x-red" data-help-name="toFloat">
-    <p>A simple node that converts binary and decimals numbers into Floating point numbers</p>
+<p>Converts Binary Strings and Decimals Digits (32 bit) into Floating point Numbers. Works also with arrays.</p>
+
+<h3>Inputs</h3>
+    <dl class="message-properties">
+        <dt>payload
+            <span class="property-type">'01' string | Int 32</span>
+        </dt>
+        <dd> the number or the array of numbers to decode in Float 32 bit. </dd>
+        <dt class="optional">Decimals Number <span class="property-type">Number</span></dt>
+        <dd> max digits you want to keep after the '.'.</dd>
+    </dl>
+
+ <h3>Outputs</h3>
+     <ol class="node-ports">
+         <li>Standard output
+             <dl class="message-properties">
+                 <dt>payload <span class="property-type">Number | Array</span></dt>
+                 <dd>the standard output of the command.</dd>
+             </dl>
+         </li>
+         <li>Standard error
+             <dl class="message-properties">
+                 <dt>payload <span class="property-type">string</span></dt>
+                 <dd>the standard error of the command.</dd>
+             </dl>
+         </li>
+     </ol>
+
+<h3>Details</h3>
+    <p><code>msg.payload</code> must be an Integer 32 bit or a Binary string like
+    '1000000010010001111010111000011' if the type is wrong an error is returned,
+    if the input is an Array the index of the wrong element is returned with the error.
+    <p>Decimals digits can be configured in the node or if left blank the numbers will not
+    be truncated</p>
+<h3>References</h3>
+    <ul>
+        <li><a>GitHub</a> - the node github repository https://github.com/robertsLando/node-red-contrib-float</li>
+    </ul>
 </script>
