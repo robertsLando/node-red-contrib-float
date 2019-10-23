@@ -72,9 +72,10 @@ module.exports = function(RED) {
                 }
             }
 
-            if(!error)
-                node.send({payload: data});
-
+            if(!error) {
+                msg.payload = data;
+                node.send(msg);
+            }
         });
     }
     RED.nodes.registerType("toFloat",FloatConversionNode);
